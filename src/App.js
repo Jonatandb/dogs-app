@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Card from "./components/Card";
 import Error from "./components/Error";
 import Select from "./components/Select";
@@ -17,11 +17,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
-  useEffect(() => {
-    updateDog()
-  }, [])
-
-  const updateDog = (breedId) => {
+  const updateDog = useCallback((breedId) => {
     setLoading(true)
     getDog(breedId)
       .then(newDog => {
@@ -33,7 +29,11 @@ function App() {
         setError('Error al cargar un perro')
         setLoading(false)
       })
-  }
+  }, [])
+
+  useEffect(() => {
+    updateDog()
+  }, [updateDog])
 
   return (
     <div className="app">

@@ -39,4 +39,4 @@ const Select = ({ updateDog }) => {
     )
 }
 
-export default Select
+export default React.memo(Select)

@@ -15,4 +15,4 @@ const Card = ({ dog, updateDog, loading }) => {
     )
 }
 
-export default Card
+export default React.memo(Card)

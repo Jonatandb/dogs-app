@@ -8,4 +8,4 @@ const Error = ({ error }) => {
     )
 }
 
-export default Error
+export default React.memo(Error)
